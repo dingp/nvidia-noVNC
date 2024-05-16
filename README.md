@@ -9,8 +9,17 @@ This is mostly copied from the repository [twobombs/deploy-nvidia-docker](https:
 
 ### Start the container on one login node
 
-Note:
-- if someone else is using port `6080` on the login node, you may need to change the first `6080` in `-p 6080:6080` to another free port.
+Generate a VNC password file. 
+
+```bash
+podman-hpc run --rm -it -v $HOME:/scratch --entrypoint=/bin/bash docker.io/dingpf/novnc-nvidia:latest
+# inside the container, run 
+vncpassword
+# once finished
+cp ~/.vnc/passwd /scratch/.vnc_passwd
+```
+
+Run the container on the login node.
 
 ```bash=
 podman-hpc run \
@@ -18,8 +27,11 @@ podman-hpc run \
 	--rm -d -p 6080:6080 \
 	--name ubuntu2204-novnc \
 	-v <software_dirs_on_global_common>:<path_in_container> \
+    -v ~/.vnc_passwd:/root/.vnc/passwd
 	dingpf/novnc-nvidia:latest
 ```
+
+Note that if someone else is using port `6080` on the login node, you may need to change the first `6080` in `-p 6080:6080` to another free port.
 
 ### Setting up a SSH tunnel to the login node
 
