@@ -1,4 +1,4 @@
-# docker image built on top of Nvidia's cuda image with noVNC
+# Nvidia Image with noVNC for Perlmutter
 
 This is mostly copied from the repository [twobombs/deploy-nvidia-docker](https://github.com/twobombs/deploy-nvidia-docker). The image contains the following elemenets:
 1. base image is nvidia's cuda image `nvidia/cuda:12.3.2-base-ubuntu22.04`;
