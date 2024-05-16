@@ -48,7 +48,7 @@ ssh -o IdentitiesOnly=yes \
 
 ### Access noVNC in a browser
 
-You should now be able to go to `localhost:6080` in a browser window. The default noVNC password is `00000000`.
+You should now be able to go to `localhost:6080` in a browser window. If you skipped setting the vnc password step above, the default noVNC password is `00000000`.
 
 
 
