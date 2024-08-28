@@ -14,7 +14,7 @@ Generate a VNC password file.
 ```bash
 podman-hpc run --rm -it -v $HOME:/scratch --entrypoint=/bin/bash docker.io/dingpf/novnc-nvidia:latest
 # inside the container, run 
-vncpassword
+vncpasswd
 # once finished
 cp ~/.vnc/passwd /scratch/.vnc_passwd
 ```
