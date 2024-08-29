@@ -33,6 +33,7 @@ podman-hpc run \
 
 Note that if someone else is using port `6080` on the login node, you may need to change the first `6080` in `-p 6080:6080` to another free port.
 
+
 ### Setting up a SSH tunnel to the login node
 
 Note: 
@@ -50,6 +51,15 @@ ssh -o IdentitiesOnly=yes \
 
 You should now be able to go to `localhost:6080` in a browser window. If you skipped setting the vnc password step above, the default noVNC password is `00000000`.
 
+
+## Use JupyterLab's proxy server for the noVNC session
+
+1. Go to https://jupyter.nersc.gov;
+2. Start a JupyterLab server on Perlmutter login node;
+3. Launch a terminal in the JupyterLab launcher, and run `podman-hpc run --gpu --rm -d -p 6080:6080 -v ~/.vnc_passwd:/root/.vnc/passwd dingpf/novnc-nvidia:latest`;
+4. Go to https://jupyter.nersc.gov/user/<user-name>/perlmutter-login-node-base/proxy/6080/vnc.html (note: replace `<user-name>` with your username);
+5. Click the gear button on the page, make sure the "Advanced" -> "WebSocket" section has the "encrypt" filed unchecked, "host" as "localhost", "Port" as 6080 and "Path" as "websockify", click "Connect"
+6. Put in your VNC password, and you should get a desktop environment right after.
 
 
 
