@@ -27,7 +27,7 @@ podman-hpc run \
 	--rm -d -p 6080:6080 \
 	--name ubuntu2204-novnc \
 	-v <software_dirs_on_global_common>:<path_in_container> \
-    -v ~/.vnc_passwd:/root/.vnc/passwd
+    -v ~/.vnc_passwd:/root/.vnc/passwd \
 	dingpf/novnc-nvidia:latest
 ```
 
